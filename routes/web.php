@@ -19,11 +19,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+//группы
 Route::group([
-    'prefix'=>'admin',
-    'namespace'=>'Admin',
-    'middleware'=>['auth', 'admin']
-    ], function (){
-        Route::get('/', 'AdminController@index');
-        //Route::resource('/categories', 'CategoryController');
+		'prefix'=>'admin',		//страница, начало юрл адреса
+		'namespace'=>'Admin',	//место где лежит контроллер
+		'middleware'=>['auth', 'admin']	//посредник
+	], function(){
+	Route::get('/', 'AdminController@index');
+	Route::resource('/categories', 'CategoryController');
+	Route::resource('/products', 'ProductController');
+	Route::get('/page', 'AdminController@page');
 });
