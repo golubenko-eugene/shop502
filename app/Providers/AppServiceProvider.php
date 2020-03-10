@@ -39,7 +39,6 @@ class AppServiceProvider extends ServiceProvider
                 'text' => 'Add category',
                 'url' => 'admin/categories/create',
             ]);
-            
             $event->menu->add('PRODUCTS');
 
             $event->menu->add([
@@ -48,11 +47,11 @@ class AppServiceProvider extends ServiceProvider
                 'label' => \App\Product::count()
             ]);
 
-             $event->menu->add([
+            $event->menu->add([
                 'text' => 'Add product',
                 'url' => 'admin/products/create',
             ]);
-
+            
         });
     }
 }

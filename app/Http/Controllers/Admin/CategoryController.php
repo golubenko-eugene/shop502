@@ -15,7 +15,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        // $categories = Category::all('id')->pluck('id')->all();
+        // array_push($categories, null);
+        // dd($categories);
+        // dd( \Arr::random($categories) );
+        $categories = Category::all();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -38,6 +43,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:3',
+        ]);
         Category::create($request->all());
         return redirect('/admin');
     }
