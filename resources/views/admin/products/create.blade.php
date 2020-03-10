@@ -14,6 +14,10 @@
 			{!! Form::label('name', 'Product Name') !!}
 			{!! Form::text('name', null, ['class'=>'form-control']) !!}
 		</div>
+		<div class="form-group">
+			{!! Form::label('categories[]', 'Parent Category') !!}
+			{!! Form::select('categories[]', $categories, null, ['multiple' => 'multiple', 'class'=>'form-control select']) !!}
+		</div>
 
 		<div class="form-group">
 
@@ -67,15 +71,16 @@
 	<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 	<script>
 	  	var options = {
-		    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-		    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-		    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-		    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+		    filebrowserImageBrowseUrl: '/filemanager?type=Images',
+		    filebrowserImageUploadUrl: '/filemanager/upload?type=Images&_token=',
+		    filebrowserBrowseUrl: '/filemanager?type=Files',
+		    filebrowserUploadUrl: '/filemanager/upload?type=Files&_token='
 	  	};
 
 	 	$('#lfm').filemanager('image');
 
-	 	$('#describe').ckeditor(options);
+	 	CKEDITOR.replace('describe', options);
+	 	$('.select').select2()
 	</script>
 
 @endsection

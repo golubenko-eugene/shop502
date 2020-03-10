@@ -20,4 +20,8 @@ class Category extends Model
     {
     	return $this->parent ? $this->parent->name : '';
     }
+    public function products()
+    {
+        return $this->belongsToMany('App\Product', 'product_category', 'product_id', 'category_id');
+    }
 }
