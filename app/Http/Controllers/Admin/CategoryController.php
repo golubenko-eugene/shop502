@@ -15,7 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        // $categories = Category::all('id')->pluck('id')->all();
+        // array_push($categories, null);
+        // dd($categories);
+        // dd( \Arr::random($categories) );
     }
 
     /**
