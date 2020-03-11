@@ -50,4 +50,8 @@
 	<script>
 		$('#lfm').filemanager('image');
 	</script>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> a4eb33c40376a506b136680e7e92b2eab3948d79

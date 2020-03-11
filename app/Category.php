@@ -12,4 +12,16 @@ class Category extends Model
     {
     	$this->attributes['slug'] = \Str::slug($value ? $value : $this->attributes['name'], '-');
     }
+    public function parent()
+    {
+    	return $this->belongsTo('App\Category', 'parent_id');	//belongsTo - связь между таблицами
+    }
+    public function getParentCategoryAttribute()
+    {
+    	return $this->parent ? $this->parent->name : '';
+    }
+    public function products()
+    {
+        return $this->belongsToMany('App\Product', 'product_category', 'product_id', 'category_id');
+    }
 }

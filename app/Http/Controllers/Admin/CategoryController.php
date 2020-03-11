@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Product;
 
 class CategoryController extends Controller
 {
@@ -19,6 +20,11 @@ class CategoryController extends Controller
         // array_push($categories, null);
         // dd($categories);
         // dd( \Arr::random($categories) );
+<<<<<<< HEAD
+=======
+        $categories = Category::all();
+        return view('admin.categories.index', compact('categories'));
+>>>>>>> a4eb33c40376a506b136680e7e92b2eab3948d79
     }
 
     /**
@@ -41,6 +47,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:3',
+        ]);
         Category::create($request->all());
         return redirect('/admin');
     }
