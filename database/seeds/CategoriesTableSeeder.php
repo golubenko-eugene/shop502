@@ -17,6 +17,6 @@ class CategoriesTableSeeder extends Seeder
         //     'parent_id' => null,
         //     'img' => null,
         // ]);
-        factory(App\Category::class, 50)->create();
+        factory(App\Category::class, 5)->create();
     }
 }

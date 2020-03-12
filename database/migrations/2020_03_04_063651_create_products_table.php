@@ -21,8 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('img', 150)->nullable();
             $table->text('describe');
             $table->string('sku', 32)->unique();
-            $table->boolean('favorite');
-
+            $table->boolean('favorite')->default(0);
             $table->timestamps();
         });
     }
