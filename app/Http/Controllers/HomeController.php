@@ -27,9 +27,9 @@ class HomeController extends Controller
         $products = \App\Product::all();
         return view('home', compact('products'));
     }
-    // public function main()
-    // {
-    //     $products = \App\Product::all();
-    //     return view('main', compact('products'));
-    // }
+    public function main()
+    {
+        $products = \App\Product::all();
+        return view('main', compact('products'));
+    }
 }
