@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,10 +12,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');      // добавляет свойство доступа ко всем методам только через авторизацию
+    // }
 
     /**
      * Show the application dashboard.
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products = \App\Product::all();
+        return view('home', compact('products'));
     }
+    // public function main()
+    // {
+    //     $products = \App\Product::all();
+    //     return view('main', compact('products'));
+    // }
 }
