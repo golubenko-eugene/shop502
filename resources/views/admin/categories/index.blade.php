@@ -27,8 +27,20 @@
 				<td>{{$item->img}}</td>
 				<td>{{$item->slug}}</td>
 				<td>{{$item->parentCategory}}</td>
-				<td></td>
-				<td></td>
+				<td>
+					<form action="/admin/categories/{{$item->id}}/edit" method="GET">
+						@csrf
+						<button class="btn btn-warning">Edit</button>
+					</form>
+				</td>
+				<td>
+					<form action="/admin/categories/{{$item->id}}" method="POST">
+						@csrf
+
+						@method('DELETE')
+						<button class="btn btn-danger">Delete</button>
+					</form>
+				</td>
 			</tr>
 			@endforeach
 		</tbody>

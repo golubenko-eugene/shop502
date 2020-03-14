@@ -35,18 +35,18 @@
 					<td>{{$product->sku}}</td>
 					<td>{{$product->favorite}}</td>				
 					<td>
-					<form action="/admin/products/{{$product->id}}/edit" method="GET">
-						@csrf
-						<button class="btn btn-warning">Edit</button>
-					</form>
-						</td>
-						<td>
-					<form action="/admin/products/{{$product->id}}" method="POST">
-						@csrf
+						<form action="/admin/products/{{$product->id}}/edit" method="GET">
+							@csrf
+							<button class="btn btn-warning">Edit</button>
+						</form>
+					</td>
+					<td>
+						<form action="/admin/products/{{$product->id}}" method="POST">
+							@csrf
 
-						@method('DELETE')
-						<button class="btn btn-danger">Delete</button>
-					</form>
+							@method('DELETE')
+							<button class="btn btn-danger">Delete</button>
+						</form>
 					</td>
 				</tr>
 			@endforeach
