@@ -71,7 +71,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('admin.categories.edit', compact('category'));
+        $categories = Category::all('id', 'name')->pluck('name', 'id')->all();
+        return view('admin.categories.edit', compact('category', 'categories'));
     }
 
     /**
@@ -84,8 +85,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
-        $category->name = $request->name;
-        $category->save();
+        $category->update($request->all());
         return redirect('/admin/categories');
     }
 
