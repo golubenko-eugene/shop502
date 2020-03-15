@@ -16,7 +16,7 @@
         </ul>
     </div>
 @endif
-    {!! Form::model($category, ['url'=>'/admin/categories'])!!}
+    {!! Form::model($category, ['url'=>'/admin/categories/'.$category->id, 'method' => 'put'])!!}
 		<div class="form-group">
 			{!! Form::label('name', 'Category Name') !!}
 			{!! Form::text('name', null, ['class'=>'form-control']) !!}
