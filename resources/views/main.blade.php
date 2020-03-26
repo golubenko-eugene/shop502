@@ -117,6 +117,16 @@
                         </tbody>
                     </table>
                 </div>
+                <section>
+                    <h3>Lastest products</h3>
+                    <div>
+                        @foreach($lastest as $p)
+                        <div class="col-md-3">
+                            <h4><a href="/product/{{$p->slug}}">{{$p->name}}</a></h4>
+                        </div>
+                        @endforeach
+                    </div>
+                </section>
             </div>
         </div>
     </body>

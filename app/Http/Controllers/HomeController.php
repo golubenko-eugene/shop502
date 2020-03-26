@@ -25,11 +25,26 @@ class HomeController extends Controller
     public function index()
     {
         $products = \App\Product::all();
+        // $favorites = Product::where('favorite', '=', 1)->get();
+        // $lastest = Product::where('created_at', 'DESC')->get();
+
+        // Product::where('favorite', '=', 1)->orderBy('created_at', 'DESC')->get();
+        $favorites = Product::favorite()->get();
+        //dd($favorites); 
         return view('home', compact('products'));
     }
     public function main()
     {
         $products = \App\Product::all();
-        return view('main', compact('products'));
+        $favorites = Product::favorite()->get();
+        $lastest = Product::lastest()->paginate(10);
+
+        //dd($lastest);
+        return view('main', compact('products', 'favorites', 'lastest'));
+    }
+    public function product($slug)
+    {
+        $product = Product::where('slug', '=', $slug)->first();
+        return view('product', compact('product'));
     }
 }

@@ -7,6 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+const axios = require('axios');
 
 /**
  * The following block of code may be used to automatically register your
@@ -30,3 +31,48 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+document.querySelector('.buy').addEventListener('submit', function(e){
+	e.preventDefault();
+	const productData = new FormData(this);
+
+	axios.post('/cart/add', productData)
+	.then(function (response) {
+		console.log(response);
+	})
+	.catch(function (error) {
+		console.log(error);});
+
+});
+
+document.querySelector('.modal-body').addEventListener('click', function (e) {
+	e.preventDefault();
+	if(e.target.classList.contains('remove-product')){
+		const id = e.target.getAttribute('data-id');
+
+		axios.post('/cart/remove', {product_id: id})
+		.then(function(response){
+			updateCart(response.data);
+		});
+		.catch(function(error) {
+			console.log(error);
+		});
+	};
+});
+
+document.querySelector('.modal-body').addEventListener('input', function (e) {
+	e.preventDefault();
+	if(e.target.classList.contains('change-qty')){
+		const id = e.target.getAttribute('data-id');
+		const qty = e.target.value;
+
+		axios.post('/cart/change-qty', {product_id: id, product_qty: qty})
+		.then(function(response){
+			updateCart(response.data);
+		});
+		.catch(function(error) {
+			console.log(error);
+		});
+	};
+});
+

@@ -11,11 +11,17 @@
 |
 */
 Route::get('/', 'HomeController@main');
+Route::get('/product/{slug}', 'HomeController@product');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/cart/add', 'CartController@add');
+Route::post('/cart/clear', 'CartController@clear');
+Route::post('/cart/remove', 'CartController@remove');
+Route::post('/cart/change-qty', 'CartController@changeQty');
 
+Route::get('/checkout', 'OrderController@checkout');
 
 //группы
 Route::group([
